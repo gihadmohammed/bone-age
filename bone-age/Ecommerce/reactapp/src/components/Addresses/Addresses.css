@@ -1,0 +1,51 @@
+
+.Add-form {
+    padding: 2rem;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgb(31, 30, 31); */
+    border: 1px solid  rgb(31, 30, 31);
+    font-size: 16px;
+    width: 750px;
+    height: auto;
+    /* text-align: center; */
+    margin: auto; 
+    margin-top: 2rem; 
+  }
+  .address-box-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .Add-form-container {
+    display: flex;
+    align-items: center; 
+    height: 100vh;
+  }
+  
+
+  .address-box {
+    background-color: #f5f5f5;
+    border: 1px solid #e6e6e6;
+    padding: 20px;
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .plus-icon {
+    font-size: 36px;
+    color: #999;
+    position: relative;
+    top: -8px;
+    left: -4px;
+  }
+
+  .add {
+    font-size: 14px;
+    color: #999;
+    position: relative;
+    top: -8px;
+    left: -4px;
+    max-width: 200px;
+  }
+  

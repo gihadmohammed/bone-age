@@ -1,0 +1,95 @@
+.product-request-form-container {
+  display: flex;
+  justify-content: center;
+  height: auto;
+  padding-bottom: 5%;
+
+}
+.productR-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.productR-image img {
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  }
+
+.product-request-form-card {
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgb(31, 30, 31);
+  /* border: 1px solid rgb(65, 122, 177); */
+
+  width: 750px;
+  height: auto;
+  align-items: center;
+ text-align: center;
+ justify-content: center;
+
+ 
+
+}
+
+.product-request-form-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.product-request-form {
+  height: auto;
+  grid-template-rows: repeat(5, auto);
+  width: 700px;
+}
+
+
+.product-request-form-label {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.product-request-form-input {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #FFFFFF; 
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.2);
+  transition: background-color 0.3s ease;
+  width: 300px;
+
+
+}
+input.product-request-form-input:hover {
+  background-color: #bdcae5;
+}
+
+.product-request-form-button {
+  margin-top: 10px ;
+    border-radius: 15px;
+    border: 1px solid #0a4985;
+    background-color: #16558F;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: transform 80ms ease-in;
+  cursor: pointer;
+}
+
+.product-request-form-button:hover {
+  background-color: #044a8b;
+}
+
+@media (max-width: 768px) {
+  .product-request-form-card {
+    background-color: white;
+    box-shadow: 0px 0px 0px rgb(31, 30, 31);
+    border: 0px ;
+    text-align: center;
+  }}

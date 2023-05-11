@@ -1,0 +1,21 @@
+
+.checkout-form {
+    padding: 2rem;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgb(31, 30, 31); */
+    border: 1px solid  rgb(31, 30, 31);
+    font-size: 16px;
+    width: 750px;
+    height: auto;
+    text-align: center;
+    margin: auto; /* this centers the element horizontally */
+    margin-top: 2rem; /* this adds some space between the element and the links */
+  }
+  
+  .checkout-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* this centers the element vertically */
+    height: 100vh; /* this sets the height of the container to the full viewport height */
+  }
+  

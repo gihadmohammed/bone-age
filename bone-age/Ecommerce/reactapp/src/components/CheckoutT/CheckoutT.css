@@ -1,0 +1,179 @@
+.order-btn:hover {
+  border: 1px solid #01070c;
+  background-color: white;
+  color: #093258;
+  cursor: pointer;
+}
+
+.order-btn{
+  outline: 0;
+  border: 0;
+  background: none;
+  /* border: 1px solid #d9d9d9; */
+  /* padding: 8px 0px; */
+  background-color: #00050a;
+  color: white;
+  text-transform: uppercase;
+  width: 70px;
+  height: 40px;
+
+  font-family: inherit;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+.checkoutt-form {
+    /* padding: 2rem; */
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgb(31, 30, 31); */
+    /* border: 1px solid  rgb(31, 30, 31); */
+    font-size: 16px;
+    width: 750px;
+    height: auto;
+    /* text-align: center; */
+    margin: auto; /* this centers the element horizontally */
+    margin-top: 2rem; 
+  }
+  
+  .checkoutt-form-container {
+    display: flex;
+    /* justify-content: center;
+    align-items: center;  */
+    height: 100vh; 
+  }
+  
+
+
+
+  .container {
+    max-width: 1960px;
+    margin: 0 auto;
+  }
+  
+  body{margin-top:20px;
+    background:#eee;
+  }
+  h3 {
+    font-size: 16px;
+  }
+  .text-navy {
+    color: #1ab394;
+  }
+  .cart-product-imitation {
+  text-align: center;
+  /* padding-top: 30px;
+  height: 80px;
+  width: 280px;
+  background-color: #f8f8f9; */
+  }
+  .product-imitation.xl {
+  padding: 120px 0;
+  }
+  .product-desc {
+  padding: 20px;
+  position: relative;
+  }
+  .ecommerce .tag-list {
+  padding: 0;
+  }
+  .ecommerce .fa-star {
+  color: #d1dade;
+  }
+  .ecommerce .fa-star.active {
+  color: #f8ac59;
+  }
+  .ecommerce .note-editor {
+  border: 1px solid #e7eaec;
+  }
+  table.shoping-cart-table {
+  margin-bottom: 0;
+  }
+  table.shoping-cart-table tr td {
+  border: none;
+  text-align: right;
+  }
+  table.shoping-cart-table tr td.desc,
+  table.shoping-cart-table tr td:first-child {
+  text-align: left;
+  }
+  table.shoping-cart-table tr td:last-child {
+  width: 80px;
+  }
+  .ibox {
+  clear: both;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding: 0;
+  }
+  .ibox.collapsed .ibox-content {
+  display: none;
+  }
+  .ibox:after,
+  .ibox:before {
+  display: table;
+  }
+  .ibox-title {
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background-color: #ffffff;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 3px 0 0;
+  color: inherit;
+  margin-bottom: 0;
+  padding: 14px 15px 7px;
+  min-height: 48px;
+  }
+  .ibox-content {
+  background-color: #ffffff;
+  color: inherit;
+  padding: 15px 20px 20px 20px;
+  border-color: #e7eaec;
+  border-image: none;
+  border-style: solid solid none;
+  border-width: 1px 0;
+  }
+  .ibox-footer {
+  color: inherit;
+  border-top: 1px solid #e7eaec;
+  font-size: 90%;
+  background: #ffffff;
+  padding: 10px 15px;
+  }
+
+  
+.nnAdd-form {
+    padding: 2rem;
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 10px rgb(31, 30, 31); */
+    /* border: 1px solid  rgb(31, 30, 31); */
+    font-size: 16px;
+    width: 750px;
+    height: auto;
+    /* text-align: center; */
+    margin: auto; /* this centers the element horizontally */
+    margin-top: 2rem; /* this adds some space between the element and the links */
+  }
+  .checkout-radio input[type="radio"] {
+    display: inline-block;
+    width: 20px;
+    margin-right: 8px;
+
+    height: 20px;
+  }
+  
+  .checkout-radio label[for^="address"] {
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+    width: 400px; /* adjust this width as needed */
+  }
+  .checkout-radio label[for^="address"], label[for^="new-address"] {
+    display: flex;
+    padding-bottom: 15px;
+    align-items: center;
+    width: 400px; /* adjust this width as needed */
+    font-family: Arial, sans-serif; /* add font-family property here */
+  }

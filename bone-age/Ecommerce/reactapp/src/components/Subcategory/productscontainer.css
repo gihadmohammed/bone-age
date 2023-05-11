@@ -1,0 +1,78 @@
+/* Styling for the product card container */
+/* Styling for the product card container */
+.body{
+  background-color: #f5f5f5;
+}
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 340px; /* decrease the height */
+  padding: 10px; /* decrease the padding */
+  width: 300px;
+  border-radius: 4px;
+  border: 1px solid;
+  box-shadow: 0 0 10px #16558F;
+  background-color: #fff;
+  text-align: center;
+}
+
+
+/* Styling for the product image */
+.product-card-image img {
+  border-radius: 5px;
+  object-fit: cover;
+  max-height: 200px;
+  max-width: 200px;
+}
+
+/* Styling for the product details */
+.product-card-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Styling for the product name */
+.product-card-details h3 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+/* Styling for the product rating */
+.product-card-details .MuiRating-root {
+  margin-top: 0px;
+}
+
+/* Styling for the product price */
+.product-card-details .product-price {
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+/* Styling for the Add to Cart button */
+.product-card-details .MuiButton-root {
+  margin-top: 0px;
+}
+
+.test111{
+  background-color: #e5f1fc;
+  height: 450px;
+  padding: 20px;
+  width: 87%;
+  overflow:hidden;
+  margin: 0 auto; /* set left and right margins to auto */
+  border-radius: 10px;
+  margin-bottom: 40px;
+
+}
+.test111-title {
+  font-size: 32px;
+  font-weight: bold;
+  position: relative;
+  top: 0;
+  width: 100%;
+  /* margin: 20px 0 0 0; */
+}

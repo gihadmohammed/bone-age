@@ -1,0 +1,480 @@
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './Addresses.css'; 
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { fontWeight } from '@mui/system';
+import { toast } from 'react-toastify';
+
+import { Modal } from "react-bootstrap";
+import Button from '@material-ui/core/Button';
+import { useNavigate } from 'react-router-dom';
+import{ 
+   LocationOn,
+  ShoppingCartRounded
+} from '@material-ui/icons';
+
+function Checkout() {
+
+    const token = localStorage.getItem('token');
+    const [user, setUser] = useState();
+    const [email, setEmail] = useState();
+    const [naddress, setnAddress] = useState();
+    const [addd, setaddd] = useState();
+    const [adds, setadds] = useState([]);
+    const [value, setValue] = useState("");
+    const [items, setItems] = useState([]);
+    const [CartItems, setCartItems] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [sum, setSum] = useState(0); 
+    const [similarProducts, setSimilarProducts] = useState([]);
+    const [productId, setproductId] = useState([]);
+    const [Address, setAddress] = useState();
+    const [id, setID] = useState();
+
+
+    const navigate = useNavigate();
+ 
+   
+    const [showModal, setShowModal] = useState(false);
+    const [selectedProduct, setSelectedProduct] = useState({});
+  
+  
+  const [first_name, setName] = useState();
+  const [city, setCity] = useState();
+  const [last_name, setNaame] = useState();
+  const [PhoneNumber, setPhoneNumber] = useState();
+  const [PostalCode , setPostalCode] = useState();
+  const [Governorate, setGovernorate] = useState();  
+  const [Apartment, setApartment] = useState();  
+
+  const handleSeeMore = (address) => {
+    setID(address.id)
+    setName(address.first_name);
+    setNaame(address.last_name);
+    setCity(address.city);
+    setPhoneNumber(address.phone_number);
+    setPostalCode(address.postal_code);
+    setGovernorate(address.governorate);
+    setApartment(address.apartment);
+    setAddress(address.address)
+    setShowModal(true);
+    setaddd("");
+  };
+  
+  const handleEdit = (event) => {
+    event.preventDefault();
+    setShowModal(false);
+
+
+    axios.post('http://localhost:8000/Authentication/edit_add/',
+  {  Add: {
+      add_id : id,
+      first_name: first_name,
+      email: email,
+      last_name: last_name,
+      PhoneNumber: PhoneNumber,
+      Apartment:Apartment,
+      Governorate:Governorate,
+      PostalCode:PostalCode,
+      city:city,
+      PhoneNumber:PhoneNumber,
+      // username: username,
+      Address: Address,
+    }},
+   { headers: {
+      'content-type': 'multipart/form-data',
+      'Authorization': `Bearer ${token}`
+
+    }})
+      .then((response) => {
+        console.log(response.data);
+        setaddd(response.data.id);
+        window.location.reload();
+
+
+
+ 
+      })
+      .catch((error) => {
+        console.log(error);
+
+      });
+
+
+  };
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setShowModal(false);
+
+
+    axios.post('http://localhost:8000/Authentication/add_add/',
+  {  Add: {
+      first_name: first_name,
+      email: email,
+      last_name: last_name,
+      PhoneNumber: PhoneNumber,
+      Apartment:Apartment,
+      Governorate:Governorate,
+      PostalCode:PostalCode,
+      city:city,
+      PhoneNumber:PhoneNumber,
+      // username: username,
+      Address: Address,
+    }},
+   { headers: {
+      'content-type': 'multipart/form-data',
+      'Authorization': `Bearer ${token}`
+
+    }})
+      .then((response) => {
+        console.log(response.data);
+        setaddd(response.data.id);
+
+
+ 
+      })
+      .catch((error) => {
+        console.log(error);
+
+      });
+
+
+  };
+
+
+
+
+
+
+
+
+    function handleRemoveAddress(address) {
+      console.log("eman")
+
+      console.log(address)
+      axios.delete(`http://localhost:8000/Authentication/delete_add/${address.id}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(() => {
+        setadds(adds.filter(add => add.id !== address.id));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }
+
+    useEffect(() => {
+      console.log(adds);
+
+    }, [adds]);
+    
+    useEffect(() => {
+      axios.get('http://localhost:8000/Authentication/get_add/'
+      , {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }})
+      .then((response) => {
+        // const addsWithPhones = response.data.map(add => ({ ...add, phoneNumber: '1234567890' }));
+        // setadds(addsWithPhones)
+        setadds(response.data)
+        console.log(response.data)
+        console.log(response.data[1].address)
+        console.log(adds)
+
+      })
+     
+        .catch((error) => {
+          console.error(error);
+        }); 
+    
+    }, []);
+
+
+     
+      useEffect(() => {
+        axios.get('http://localhost:8000/Authentication/get_profile/'
+        , {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }})
+        .then((response) => {
+           setUser(response.data.username);
+           setEmail(response.data.email);
+           setAddress(response.data.Address);
+         
+          console.log(response.data.user)})
+          .catch((error) => {
+            console.error(error);
+          }); 
+      
+      }, []);
+  return (
+    <>
+    <div>
+      <div
+      style={{
+        textAlign:"center",
+
+      }}
+      >
+      <h2
+      style={{
+        fontSize:"30px"
+        ,
+        fontWeight:"bold",
+        color:"#16558F"
+
+      }}
+      >
+   <LocationOn/>   Your Addresses
+
+      </h2>
+
+
+      </div>
+      <div className=' fadeInDisplayName Add-form-container'>
+        <form className='Add-form'>
+        <div className="address-box-container">
+        <Link to={`/newAdd`} style={{ textDecoration: 'none' }}>
+
+<div className="address-box"
+style={{
+  height:"170px"
+
+}}
+>
+  <div className="plus-icon">+</div>
+  <div className="add-address" style={{
+    color:"black",
+    fontWeight:'bold',
+
+  }}>Add a new address</div>
+</div> 
+</Link>  
+{
+adds.map(add => (
+  <div className="address-box">
+    <h3 style={{ fontSize: '16px', fontWeight: 'bold', color: 'black', marginBottom: '2px' }}>
+      {add.first_name} {add.last_name}
+    </h3>
+    <h4 style={{ fontSize: '14px', color: 'grey' }}>
+      Phone Number:<br />
+      +20{add.phone_number}
+    </h4>
+    {add.address}, {add.apartment} <br />
+    City: {add.city}
+    <br />
+    Governorate: {add.governorate}
+    <div> 
+    <a href="#" onClick={() => handleRemoveAddress(add)} style={{ textDecoration: 'underline', color: 'blue' }}>Remove</a>
+    &nbsp;
+    |
+    &nbsp;
+
+    <a href="#" onClick={() => handleSeeMore(add)} style={{ textDecoration: 'underline', color: 'blue' }}>Edit</a>
+    </div>
+  </div>
+))
+        }
+    
+</div>
+        </form>
+ 
+      </div>
+      </div>
+      <Modal show={showModal} onHide={() => setShowModal(false)} centered>
+      <div className="modal-container">
+        <Modal.Body className="modal-content">
+        <h2 style={{fontSize: '24px', fontWeight: 'bold', display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', margin: 0}}>Edit this Address</h2>
+        
+      <div>
+      <div className='nAdd-form-container'>
+        <form className='nAdd-form'
+        
+      >
+                  <div style={{
+                      'height':'70px' 
+                  }}>
+      <h4>
+Edit this Address      </h4>
+          </div>
+          <div  className='names'  style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+          <label htmlFor="firstName" className="" style={{ gridArea: '1 / 1' }}>
+            First Name
+          </label>
+          <div           style={{  marginRight:'20px'}}
+      >
+          <input 
+            type="text"
+            id="firstName"
+            className="product-request-form-input"
+            placeholder="First Name"
+            value={first_name}
+            onChange={(e) => setName(e.target.value)} 
+            style={{ gridArea: '2 / 1', width: '100%' , marginRight:'20px'}}
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+          </div>
+          <label htmlFor="lastName" className="" style={{ gridArea: '1 / 2' }}>
+            Last Name
+          </label>
+          <input 
+            type="text"
+            id="lastName"
+            className="product-request-form-input"
+            placeholder="Last Name"
+            value={last_name} 
+            onChange={(e) => setNaame(e.target.value)} 
+            style={{ gridArea: '2 / 2', width: '100%' }}
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+          </div>
+          <label htmlFor="StreetAddress  " className="" >
+           Address        </label>
+           <div           style={{  marginBottom:'10px'}} ></div>
+          <input 
+            type="text"
+            id="Add1"
+            className="product-request-form-input"
+            placeholder="Street address,P.O. box, comoany name, c/o"
+            style={{
+              width:'250px'
+            }}
+            value={Address} 
+            onChange={(e) => setAddress(e.target.value)} 
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+           <input 
+            type="text"
+            id="Add2"
+            className="product-request-form-input"
+            placeholder="Apartment,suite,unit,floor,etc."
+            style={{
+              width:'250px'
+            }}
+            value={Apartment} 
+            onChange={(e) => setApartment(e.target.value)} 
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+      <label htmlFor="city  " className="" >
+           City        </label>
+           <div           style={{  marginBottom:'10px'}} ></div>
+          <input 
+            type="text"
+            id="city"
+            className="product-request-form-input"
+            placeholder="City"
+            style={{
+              width:'250px'
+            }}
+            value={city} 
+            onChange={(e) => setCity(e.target.value)} 
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+      <label htmlFor="Governorate  " className="" >
+      Governorate        </label>
+           <div           style={{  marginBottom:'10px'}} ></div>
+           <select id="governorate" className="product-request-form-input" 
+            value={Governorate} 
+            onChange={(e) => setGovernorate(e.target.value)} 
+            style={{ width: '250px' }}>
+      <option value="">Select Governorate</option>
+      <option value="Alexandria">Alexandria</option>
+      <option value="Aswan">Aswan</option>
+      <option value="Asyut">Asyut</option>
+      <option value="Beheira">Beheira</option>
+      <option value="Beni Suef">Beni Suef</option>
+      <option value="Cairo">Cairo</option>
+      <option value="Dakahlia">Dakahlia</option>
+      <option value="Damietta">Damietta</option>
+      <option value="Faiyum">Faiyum</option>
+      <option value="Gharbia">Gharbia</option>
+      <option value="Giza">Giza</option>
+      <option value="Ismailia">Ismailia</option>
+      <option value="Kafr El Sheikh">Kafr El Sheikh</option>
+      <option value="Luxor">Luxor</option>
+      <option value="Matruh">Matruh</option>
+      <option value="Minya">Minya</option>
+      <option value="Monufia">Monufia</option>
+      <option value="New Valley">New Valley</option>
+      <option value="North Sinai">North Sinai</option>
+      <option value="Port Said">Port Said</option>
+      <option value="Qalyubia">Qalyubia</option>
+      <option value="Qena">Qena</option>
+      <option value="Red Sea">Red Sea</option>
+      <option value="Sharqia">Sharqia</option>
+      <option value="Sohag">Sohag</option>
+      <option value="South Sinai">South Sinai</option>
+      <option value="Suez">Suez</option>
+      </select>
+      <label htmlFor="PostalCode  " className="" >
+      Postal Code        </label>
+           <div           style={{  marginBottom:'10px'}} ></div>
+          <input 
+            type="number"
+            id="PostalCode"
+            className="product-request-form-input"
+            placeholder="Postal Code "
+            style={{
+              width:'250px'
+            }}
+            // onChange={(event) => setProductName(event.target.value)}
+            value={PostalCode} 
+            onChange={(e) => setPostalCode(e.target.value)} 
+          />
+      <label htmlFor="PhoneNumber  " className="" >
+      Phone Number        </label>
+           <div           style={{  marginBottom:'10px'}} ></div>
+          <input 
+            type="number"
+            id="PhoneNumber"
+            className="product-request-form-input"
+            placeholder="Phone Number"
+            style={{
+              width:'250px'
+            }}
+            value={PhoneNumber} 
+            onChange={(e) => setPhoneNumber(e.target.value)} 
+            // onChange={(event) => setProductName(event.target.value)}
+          />
+                <div>
+            <button
+            style={{
+              'width':'200px',
+              'borderRadius':'20px'
+            }} type="submit" className="product-request-form-button"
+               onClick={handleEdit}
+      
+            >
+      Save Changes       </button>
+            </div>
+      
+        </form>
+      </div>
+      </div>
+      
+       
+      
+      
+        {/* <p style={{fontSize: '17px'}}>{selectedProduct.Description}</p> */}
+        </Modal.Body>
+      </div>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setShowModal(false)}>Close</Button>
+      </Modal.Footer>
+      </Modal>
+      
+      
+      
+      
+      </>
+  );
+}
+
+
+export default Checkout;

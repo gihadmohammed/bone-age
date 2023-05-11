@@ -1,0 +1,22 @@
+button[type="submit"]:disabled svg {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .container12 {
+    max-width: 600px;
+    margin: 50px auto; /* center the container horizontally */
+  }
+  
+  .password-input {
+    width: 100%;
+    box-sizing: border-box;
+  }
